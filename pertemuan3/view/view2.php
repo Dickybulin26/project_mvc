@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Latihan MVC</h1>
+    <h1>Detail Mahasiswa</h1>
 
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
@@ -20,30 +20,21 @@
             <th>Jurusan</th>
         </tr>
 
-        <?php
-        // Cek apakah data mahasiswa ada
-        if (isset($mahasiswa) && !empty($mahasiswa)):
-            $i = 1;  // Nomor urut
-            foreach ($mahasiswa as $row):  // Looping untuk setiap data mahasiswa
-                ?>
-                <tr>
-                    <td><?= $i; ?></td>
-                    <td>
-                        <a href="#">ubah</a> |
-                        <a href="#">hapus</a>
-                    </td>
-                    <td><?= htmlspecialchars($row['nim']); ?></td>
-                    <td><?= htmlspecialchars($row['nama']); ?></td>
-                    <td><?= htmlspecialchars($row['email']); ?></td>
-                    <td><?= htmlspecialchars($row['jurusan']); ?></td>
-                </tr>
-                <?php
-                $i++;
-            endforeach;
-        else:
-            ?>
+        <?php if (isset($mahasiswa) && !empty($mahasiswa)): ?>
             <tr>
-                <td colspan="7">Tidak ada data mahasiswa</td>
+                <td><?= htmlspecialchars($mahasiswa['id']); ?></td>
+                <td>
+                    <a href="#">ubah</a> |
+                    <a href="#">hapus</a>
+                </td>
+                <td><?= htmlspecialchars($mahasiswa['nim']); ?></td>
+                <td><?= htmlspecialchars($mahasiswa['nama']); ?></td>
+                <td><?= htmlspecialchars($mahasiswa['email']); ?></td>
+                <td><?= htmlspecialchars($mahasiswa['jurusan']); ?></td>
+            </tr>
+        <?php else: ?>
+            <tr>
+                <td colspan="6">Tidak ada data mahasiswa</td>
             </tr>
         <?php endif; ?>
     </table>

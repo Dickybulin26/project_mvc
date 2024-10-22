@@ -1,6 +1,6 @@
 <?php
 
-require_once 'controllers/controller.php';
+// require_once 'controllers/controller.php';
 
 // Fungsi untuk menjalankan controller dan method yang sesuai
 function route($url)
@@ -13,7 +13,7 @@ function route($url)
     $methodName = $parts[4] ?? 'index'; // Jika tidak ada method, gunakan 'index'
 
     // Cek apakah file controller ada
-    $controllerFile = 'controllers/' . $controllerName . '.php';
+    $controllerFile = 'controllers/controller.php';
     if (file_exists($controllerFile)) {
         require_once $controllerFile;
 

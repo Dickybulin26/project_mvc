@@ -39,15 +39,15 @@ class MahasiswaModel
         return $mahasiswa;  // Mengembalikan array mahasiswa
     }
 
-    // Method untuk mengambil data nim mahasiswa
-    public function getNim($id)
+    // Method untuk mengambil data Nama mahasiswa
+    // Method untuk mengambil data mahasiswa berdasarkan id
+    public function getMahasiswaById($id)
     {
-        $query = "SELECT nim FROM tb_mahasiswa WHERE id = ?";
-        $nim = $this->db->prepare($query);
-        $nim->bind_param("i", $id);
-        $nim->execute();
-        $result = $nim->get_result();
-        $row = $result->fetch_assoc();
-        return $row['nim'] ?? null;
+        $query = "SELECT * FROM tb_mahasiswa WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc(); // Kembalikan satu baris data mahasiswa
     }
 }

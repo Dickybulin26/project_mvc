@@ -24,11 +24,10 @@ class MahasiswaController
 
     //* method untuk memanggil nim mahasiswa
     // Dalam MahasiswaController::getNim()
-    public function getNim($id)
+    public function getId($id)
     {
-        // ambil data nim mahasiswa
-        $nim = $this->model->getNim($id);
-        // echo "NIM mahasiswa dengan ID $id adalah: $nim";
+        // ambil data nama mahasiswa
+        $mahasiswa = $this->model->getMahasiswaById($id);
 
         // Mengirim data ke view
         require __DIR__ . '/../view/view2.php';
