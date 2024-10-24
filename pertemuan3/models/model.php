@@ -39,7 +39,6 @@ class MahasiswaModel
         return $mahasiswa;  // Mengembalikan array mahasiswa
     }
 
-    // Method untuk mengambil data Nama mahasiswa
     // Method untuk mengambil data mahasiswa berdasarkan id
     public function getMahasiswaById($id)
     {
@@ -50,4 +49,34 @@ class MahasiswaModel
         $result = $stmt->get_result();
         return $result->fetch_assoc(); // Kembalikan satu baris data mahasiswa
     }
+
+    // Method untuk menambahkan data mahasiswa
+    public function addMahasiswa($data)
+    {
+        $query = "INSERT INTO tb_mahasiswa (nim, nama, email, jurusan) VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+
+        // Bind parameter
+        $stmt->bind_param(
+            "ssss",
+            $data['nim'],
+            $data['nama'],
+            $data['email'],
+            $data['jurusan']
+        );
+
+        // Eksekusi statement
+        $stmt->execute();
+
+        // Tutup statement
+        $stmt->close();
+
+        // Anda bisa menambahkan pengecekan untuk keberhasilan operasi
+        if ($stmt->affected_rows > 0) {
+            return true; // Data berhasil ditambahkan
+        } else {
+            return false; // Gagal menambahkan data
+        }
+    }
+
 }

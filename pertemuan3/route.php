@@ -9,7 +9,11 @@ function route($url)
 
     // Pisahkan controller dan method dari URL
     $parts = explode('/', $url);
-    $controllerName = ucfirst($parts[3]) . 'Controller'; // Contoh: mahasiswa -> MahasiswaController
+
+    //* uncomment below if your controller is not named 'mahasiswa'
+    // $controllerName = ucfirst($parts[3]) . 'Controller'; // Contoh: mahasiswa -> MahasiswaController
+
+    $controllerName = 'MahasiswaController'; // Contoh: mahasiswa -> MahasiswaController
     $methodName = $parts[4] ?? 'index'; // Jika tidak ada method, gunakan 'index'
 
     // Cek apakah file controller ada
